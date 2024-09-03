@@ -7,8 +7,56 @@ package clases;
 
 /**
  *
- * @author casa
+ * @author SENA
  */
 public class TipoGenero {
+    private String codigo;
     
+    public TipoGenero (String codigo){
+        this.codigo = codigo;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+    
+    public String getGenero() {
+        String genero=null;
+        switch(codigo){
+            case "M": genero="Masculino"; break;
+            case "F": genero="Femenino"; break;
+            default: genero="Deconocido"; break;
+        }
+        return genero;
+    }
+    
+    @Override
+    public String toString(){
+        return getGenero();
+    }
+    
+    public String getRadioButtons(){
+        String lista="";
+        if(codigo==null) codigo="";
+        switch(codigo){
+            case "M":
+                lista="<input type='radio' name='genero' value='M' checked>Masculino "
+                        + "<input type='radio' name='genero' value='F'>Femenino ";
+                break;
+            case "F":
+                lista="<input type='radio' name='genero' value='M'>Masculino "
+                        + "<input type='radio' name='genero' value='F'checked>Femenino ";
+                break;
+            default:
+                lista="<input type='radio' name='genero' value='M' checked>Masculino "
+                        + "<input type='radio' name='genero' value='F'>Femenino ";
+                break;
+        }
+        return lista;
+    }
+            
 }

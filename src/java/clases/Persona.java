@@ -20,6 +20,7 @@ public class Persona {
     private String genero;
     private String correoElectronico;
     private String tipo;
+    private String clave;
 
     public Persona() {
     }
@@ -36,6 +37,8 @@ public class Persona {
                 this.genero = resultado.getString("genero");
                 this.correoElectronico = resultado.getString("correoElectronico");
                 this.tipo = resultado.getString("tipo");
+                this.clave = resultado.getString("clave");
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,6 +92,21 @@ public class Persona {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+    
+    public String getClave() {
+        return clave != null ? clave : "";
+    }
+
+    public void setClave(String clave) {
+        if (clave == null || clave.trim().length() == 0) {
+            clave = identificacion;
+        }
+        if (clave.length() < 32) {
+            this.clave = "md5('" + clave + "')";
+        } else {
+            this.clave = "'" + clave + "'";
+        }
+    }
 
     @Override
     public String toString() {
@@ -96,16 +114,16 @@ public class Persona {
     }
 
     public boolean grabar() {
-        String cadenaSQL = "INSERT INTO Persona (identificacion, nombre, telefono, genero, correoElectronico, tipo) "
+        String cadenaSQL = "INSERT INTO Persona (identificacion, nombre, telefono, genero, correoElectronico, tipo, clave) "
                          + "VALUES ('" + identificacion + "', '" + nombre + "', '" + telefono + "', '" 
-                         + genero + "', '" + correoElectronico + "', '" + tipo + "')";
+                         + genero + "', '" + correoElectronico + "', '" + tipo + "'," + clave + ")";
         return ConectorBD.ejecutarQuery(cadenaSQL);
     }
 
     public boolean modificar(String identificacionAnterior) {
         String cadenaSQL = "UPDATE Persona SET identificacion='" + identificacion + "', nombre='" + nombre 
                          + "', telefono='" + telefono + "', genero='" + genero 
-                         + "', correoElectronico='" + correoElectronico + "', tipo='" + tipo 
+                         + "', correoElectronico='" + correoElectronico + "', tipo='" + tipo + "', clave=" + clave
                          + "' WHERE identificacion='" + identificacionAnterior + "'";
         return ConectorBD.ejecutarQuery(cadenaSQL);
     }
@@ -117,7 +135,7 @@ public class Persona {
 
     public static List<Persona> getListaEnObjetos(String filtro, String orden) {
         List<Persona> lista = new ArrayList<>();
-        String cadenaSQL = "SELECT identificacion, nombre, telefono, genero, correoElectronico, tipo FROM Persona";
+        String cadenaSQL = "SELECT identificacion, nombre, telefono, genero, correoElectronico, tipo, clave FROM Persona";
         if (filtro != null && !filtro.isEmpty()) {
             cadenaSQL += " WHERE " + filtro;
         }
@@ -134,6 +152,7 @@ public class Persona {
                 persona.setGenero(resultado.getString("genero"));
                 persona.setCorreoElectronico(resultado.getString("correoElectronico"));
                 persona.setTipo(resultado.getString("tipo"));
+                persona.setClave(resultado.getString("clave"));
                 lista.add(persona);
             }
         } catch (SQLException ex) {
