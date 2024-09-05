@@ -96,6 +96,10 @@ public class Persona {
     public String getClave() {
         return clave != null ? clave : "";
     }
+    
+    public TipoPersona getTipoEnObjeto(){
+        return new TipoPersona(tipo);
+    }
 
     public void setClave(String clave) {
         if (clave == null || clave.trim().length() == 0) {
