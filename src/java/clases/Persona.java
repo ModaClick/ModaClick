@@ -132,6 +132,15 @@ public class Persona {
         String cadenaSQL = "DELETE FROM Persona WHERE identificacion='" + identificacion + "'";
         return ConectorBD.ejecutarQuery(cadenaSQL);
     }
+    
+    public static Persona validar(String identificacion, String clave ){
+        Persona persona = null;
+        List<Persona> lista = Persona.getListaEnObjetos("identificacion='" + identificacion + "' and clave = md5('" + clave + "')", null);
+        if (lista.size()>0) {
+            persona=lista.get(0);
+        }
+        return persona;
+     }
 
     public static List<Persona> getListaEnObjetos(String filtro, String orden) {
         List<Persona> lista = new ArrayList<>();
