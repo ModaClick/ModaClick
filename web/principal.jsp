@@ -1,7 +1,7 @@
 <%-- 
     Document   : principal.jsp
     Created on : 25/04/2024, 11:16:54 AM
-    Author     : SENA
+    Author     : CASA
 --%>
 <%@page import="clases.Persona"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

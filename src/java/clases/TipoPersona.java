@@ -7,7 +7,7 @@ package clases;
 
 /**
  *
- * @author SENA
+ * @author CASA
  */
 public class TipoPersona {
    
