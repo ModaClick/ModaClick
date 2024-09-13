@@ -72,6 +72,10 @@ public class Persona {
     public void setGenero(String genero) {
         this.genero = genero;
     }
+    
+    public TipoGenero getTipoGenero(){
+        return new TipoGenero(genero);
+    }
 
     public String getCorreoElectronico() {
         return correoElectronico != null ? correoElectronico : "";
@@ -90,22 +94,22 @@ public class Persona {
     }
     
     public String getClave() {
-        return clave != null ? clave : "";
+        String resultado=clave;
+            if (clave==null) resultado="";
+           return resultado;
+    }
+
+    public void setClave(String clave) {
+        if (clave==null || clave.trim().length()==0) clave=identificacion;
+        if (clave.length()<32){
+            this.clave="md5('" + clave + "')";
+        } else {
+            this.clave="'" + clave + "'";
+        }
     }
     
     public TipoPersona getTipoEnObjeto(){
         return new TipoPersona(tipo);
-    }
-
-    public void setClave(String clave) {
-        if (clave == null || clave.trim().length() == 0) {
-            clave = identificacion;
-        }
-        if (clave.length() < 32) {
-            this.clave = "md5('" + clave + "')";
-        } else {
-            this.clave = "'" + clave + "'";
-        }
     }
 
     @Override
@@ -121,12 +125,23 @@ public class Persona {
     }
 
     public boolean modificar(String identificacionAnterior) {
-        String cadenaSQL = "UPDATE Persona SET identificacion='" + identificacion + "', nombre='" + nombre 
+    // Iniciar construcción de la sentencia SQL
+    String cadenaSQL = "UPDATE Persona SET identificacion='" + identificacion + "', nombre='" + nombre
                          + "', telefono='" + telefono + "', genero='" + genero 
-                         + "', correoElectronico='" + correoElectronico + "', tipo='" + tipo + "', clave=" + clave
-                         + "' WHERE identificacion='" + identificacionAnterior + "'";
-        return ConectorBD.ejecutarQuery(cadenaSQL);
+                         + "', correoElectronico='" + correoElectronico + "', tipo='" + tipo + "'";
+    
+    // Si clave no es null ni vacía, agregarla a la consulta
+    if (clave != null && !clave.isEmpty()) {
+        cadenaSQL += ", clave=" + clave;
     }
+    
+    // Finalizar con la condición WHERE
+    cadenaSQL += " WHERE identificacion='" + identificacionAnterior + "'";
+
+    // Ejecutar la consulta
+    return ConectorBD.ejecutarQuery(cadenaSQL);
+}
+
 
     public boolean eliminar() {
         String cadenaSQL = "DELETE FROM Persona WHERE identificacion='" + identificacion + "'";

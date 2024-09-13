@@ -186,24 +186,3 @@ CREATE TABLE MedioPago (
     descripcionMetodoPago TEXT
 );
 
--- Tabla MedioPagoPorVenta
-CREATE TABLE MedioPagoPorVenta (
-    idMedioPagoFactura INT AUTO_INCREMENT PRIMARY KEY,
-    idVenta INT,
-    idMedioPago INT,
-    fecha DATETIME,
-    valor INT,
-    FOREIGN KEY (idVenta) REFERENCES Venta(idVenta),
-    FOREIGN KEY (idMedioPago) REFERENCES MedioPago(idMedioPago)
-);
-
--- Tabla MedioPagoPorCompra
-CREATE TABLE MedioPagoPorCompra (
-    idMedioPagoCompra INT AUTO_INCREMENT PRIMARY KEY,
-    idCompra INT,
-    idMedioPago INT,
-    fecha DATETIME,
-    valor INT,
-    FOREIGN KEY (idCompra) REFERENCES Compra(id),
-    FOREIGN KEY (idMedioPago) REFERENCES MedioPago(idMedioPago)
-);
