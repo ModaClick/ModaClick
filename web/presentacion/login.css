@@ -1,0 +1,90 @@
+/* General */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('https://images.unsplash.com/photo-1605478031410-3467e8d57fb6?crop=entropy&fit=crop&w=1920&h=1080') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.login-wrapper {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+    padding: 40px;
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+}
+
+.logo {
+    width: 100px; /* Ajusta el tamaño del logo según sea necesario */
+    margin-bottom: 20px;
+}
+
+.login-wrapper h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: normal;
+}
+
+/* Estilos de los campos de entrada */
+.input-group {
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center; /* Alineación de los íconos y el texto */
+}
+
+.input-group input {
+    width: calc(100% - 40px); /* Ajustar el campo de texto para que no se desborde */
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    padding-right: 40px; /* Espacio para el ícono a la derecha */
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #0078D4; /* Azul */
+}
+
+.input-group i {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Mover el ícono a la derecha */
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #0078D4; /* Azul */
+}
+
+/* Botón */
+.btn {
+    background-color: #0078D4;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #005a9e;
+}
