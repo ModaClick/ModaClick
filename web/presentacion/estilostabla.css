@@ -1,0 +1,102 @@
+
+/* Estilo para el título de la tabla */
+h3 {
+    text-align: center;
+    background-color: #0a9396; /* El color de la transición */
+    color: #ffffff; /* Texto blanco para contraste */
+    padding: 10px;
+    border-radius: 8px 8px 0 0; /* Bordes redondeados en la parte superior */
+    margin: 0;
+}
+
+/* Estilo general para las tablas */
+table.tabla-categorias {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    color: #333;
+    background-color: #f0f0f0; /* Color de fondo más oscuro para filas */
+    border-radius: 8px;
+    overflow: hidden;
+}
+/* Estilo general para las celdas de la tabla */
+table.tabla-categorias td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left; /* Alineación izquierda para todo el contenido */
+    vertical-align: middle;
+}
+
+/* Estilo específico para la columna de los iconos */
+table.tabla-categorias td:last-child {
+    text-align: center; /* Centra solo los iconos en la última columna */
+}
+
+/* Estilo para los botones e iconos */
+.icono {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin: 0 5px; /* Añade un pequeño margen entre los iconos */
+}
+
+.icono:hover {
+    transform: scale(1.1);
+}
+
+table.tabla-categorias th {
+    background-color: #005f73; /* Azul oscuro */
+    color: #ffffff;
+    padding: 10px;
+    text-align: center; /* Centra el texto en las cabeceras */
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+table.tabla-categorias th:hover {
+    background-color: #0a9396; /* Color de fondo más oscuro al pasar el ratón */
+}
+/* Estilo para las filas de la tabla */
+table.tabla-categorias td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+table.tabla-categorias tr:hover {
+    background-color: #e0e0e0; /* Color de fondo suave al pasar el ratón */
+}
+
+/* Estilo para los botones e iconos */
+.icono {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.icono:hover {
+    transform: scale(1.1);
+}
+.search-form {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+.search-button {
+    background-color: #005f73; /* Color del botón */
+    color: #ffffff; /* Texto blanco */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #0a9396; /* Color más claro al pasar el ratón */
+}
+
