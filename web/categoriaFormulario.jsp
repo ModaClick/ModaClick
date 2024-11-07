@@ -12,11 +12,7 @@
     }
 
     /* Estilo del encabezado del formulario */
-
     h2 {
-
-    h3 {
-
         text-align: center; /* Centrar el texto */
         color: #333333; /* Color del texto */
         font-size: 24px; /* Tamaño de fuente */
@@ -69,11 +65,7 @@
 %>
 
 <div class="form-container">
-
     <h2><%= accion.toUpperCase() %> CATEGORÍA</h2>
-
-    <h3><%= accion.toUpperCase() %> CATEGORÍA</h3>
-
     <form name="formulario" method="post" action="principal.jsp?CONTENIDO=categoriasActualizar.jsp">
         <div class="form-group">
             <label for="id">Id</label>

@@ -7,7 +7,6 @@
 <head>
     <meta charset="UTF-8">
     <title><%= request.getParameter("idPago") != null ? "Modificar Pago" : "Adicionar Pago" %></title>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         /* Estilo del contenedor del formulario */
@@ -70,60 +69,6 @@
     <div class="form-container">
         <h2><%= request.getParameter("idPago") != null ? "MODIFICAR PAGO" : "ADICIONAR PAGO" %></h2>
 
-    <style>
-        /* Estilos para el formulario */
-        .form-container {
-            border: 2px solid #000;
-            padding: 20px;
-            width: 300px;
-            margin: 0 auto;
-            background-color: #f9f9f9;
-        }
-
-        .form-container h1 {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 5px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .form-buttons {
-            text-align: center;
-        }
-
-        .form-buttons input {
-            padding: 10px 20px;
-            margin: 5px;
-            border: 2px solid #000;
-            background-color: #fff;
-            cursor: pointer;
-        }
-
-        .form-buttons input:hover {
-            background-color: #ccc;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="form-container">
-        <h1><%= request.getParameter("idPago") != null ? "Modificar Pago" : "Adicionar Pago" %></h1>
-
-
         <%
             // Obtener los parámetros necesarios
             String idPago = request.getParameter("idPago");
@@ -152,7 +97,6 @@
             <p><strong>ID de la compra:</strong> <%= idCompra != null ? idCompra : "No se encontró el ID de la compra" %></p>
 
             <!-- Campo para seleccionar la fecha del pago -->
-
             <div class="form-group">
                 <label for="fechaPago">Fecha</label>
                 <input type="date" name="fechaPago" id="fechaPago" class="form-control" value="<%= fecha %>" required>
@@ -179,27 +123,6 @@
                 <input type="number" name="valorPago" id="valorPago" class="form-control" value="<%= valor %>" required>
             </div>
 
-            <label for="fechaPago">Fecha</label>
-            <input type="date" name="fechaPago" id="fechaPago" value="<%= fecha %>" required>
-
-            <!-- Campo para seleccionar el medio de pago -->
-            <label for="medioPago">Medio Pago</label>
-            <select name="medioPago" id="medioPago" required>
-                <%
-                    for (MedioDePago medio : mediosDePago) {
-                        String selected = medio.getId().equals(idMedioPago) ? "selected" : "";
-                %>
-                <option value="<%= medio.getId() %>" <%= selected %>><%= medio.getTipoPago() %></option>
-                <%
-                    }
-                %>
-            </select>
-
-            <!-- Campo para ingresar el valor del pago -->
-            <label for="valorPago">Valor</label>
-            <input type="number" name="valorPago" id="valorPago" value="<%= valor %>" required>
-
-
             <!-- Campo oculto para pasar el id de la compra -->
             <input type="hidden" name="idCompra" value="<%= idCompra %>">
 
@@ -207,15 +130,9 @@
             <input type="hidden" name="idPago" value="<%= idPago != null ? idPago : "" %>">
 
             <!-- Botones para agregar o modificar el pago -->
-
             <div class="text-center">
                 <input type="submit" value="<%= idPago != null ? "Modificar" : "Agregar" %>" class="btn-submit">
                 <input type="button" value="Cancelar" class="btn-submit" onclick="window.history.back();">
-
-            <div class="form-buttons">
-                <input type="submit" value="<%= idPago != null ? "Modificar" : "Agregar" %>">
-                <input type="button" value="Cancelar" onclick="window.history.back();">
-
             </div>
         </form>
     </div>

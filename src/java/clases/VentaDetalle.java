@@ -117,7 +117,7 @@ public class VentaDetalle {
             String nombre = resultado.getString("nombre");
             int porcentaje = resultado.getInt("porcentaje");  // Obtener también el porcentaje del impuesto
             // Concatenar los impuestos en una sola cadena
-            nombreImpuesto += nombre + " " + porcentaje + "%<br>";
+            nombreImpuesto += nombre + " " + porcentaje + "%";
         }
     } catch (SQLException ex) {
         Logger.getLogger(VentaDetalle.class.getName()).log(Level.SEVERE, null, ex);

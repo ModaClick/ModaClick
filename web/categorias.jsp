@@ -10,11 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
      <style>
         /* Estilo de encabezado centrado */
-
         .table-container h2 {
-
-        .table-container h3 {
-
             text-align: center;
             color: #333;
             margin: 0;
@@ -64,24 +60,7 @@
             align-items: center;
             margin: 0 2px;
         }
-
-        .btn-add {
-            background-color: #28a745;
-        }
-        .btn-modify {
-            background-color: #ffc107;
-        }
-        .btn-delete {
-            background-color: #dc3545;
-        }
-
-        /* Iconos dentro de los botones */
-        .icono {
-            width: 20px;
-            height: 20px;
-            margin-right: 5px;
-        }
-
+      
 
         /* Evitar el desbordamiento en la tabla */
         .table-responsive {
@@ -93,11 +72,7 @@
 
 <div class="container-fluid">
     <div class="table-container">
-
     <h2>CATEGORÍAS</h2>
-
-    <h3>CATEGORÍAS</h3>
-
      
         <div class="table-responsive">
             <table class="table table-striped table-hover">
@@ -123,16 +98,10 @@
                     <td>
                      
                         <a href="principal.jsp?CONTENIDO=categoriaFormulario.jsp&accion=Modificar&id=<%= categoria.getIdCategoria() %>" class="btn btn-action btn-edit">
-
                             <img src="presentacion/modificar.png"  alt="Modificar"> 
                         </a>
                         <button onclick="confirmarEliminacion(<%= categoria.getIdCategoria() %>)" class="btn btn-action btn-delete">
                             <img src="presentacion/eliminar.png"  alt="Eliminar"> 
-
-                            <img src="presentacion/modificar.png" class="icono" alt="Modificar"> 
-                        </a>
-                        <button onclick="confirmarEliminacion(<%= categoria.getIdCategoria() %>)" class="btn btn-action btn-delete">
-                            <img src="presentacion/eliminar.png" class="icono" alt="Eliminar"> 
                         </button>
                     </td>
                 </tr>
