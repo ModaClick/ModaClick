@@ -159,7 +159,11 @@
 
 <div class="container-fluid">
     <div class="table-container">
+
         <h2>Inventario Kardex</h2>
+
+        <h3>Inventario Kardex</h3>
+
 
         <!-- Información general del artículo -->
         <table class="info-table">

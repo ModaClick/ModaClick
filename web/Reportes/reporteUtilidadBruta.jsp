@@ -3,6 +3,7 @@
 <%@page import="clases.VentaDetalle"%>
 <%@page import="clases.Inventario"%>
 <%@page import="clases.Categoria"%>
+<<<<<<< HEAD
 <%@page contentType="text/html; charset=UTF-8"%>
 
 <!DOCTYPE html>
@@ -53,6 +54,14 @@
         }
     </style>
 
+=======
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Reporte Utilidad Bruta por Ventas</title>
+>>>>>>> 7107026975515d79007e051943af17425710c6d8
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -78,9 +87,17 @@
         });
     </script>
 </head>
+<<<<<<< HEAD
 <body class="bg-light">
 
 <%
+=======
+<body>
+<%
+    // Obtener la URL completa del logo
+    String logoUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/Icono/logo.jpg";
+
+>>>>>>> 7107026975515d79007e051943af17425710c6d8
     // Filtros por rango de meses de venta y otros
     String filtro = "";
     String chkMes = request.getParameter("chkMes");
@@ -117,6 +134,7 @@
     } else {
         chkIdCategoria = "";
     }
+<<<<<<< HEAD
     
         if (request.getParameter("formato") != null) {
         String tipoDeContenido = "";
@@ -135,6 +153,8 @@
         response.setContentType(tipoDeContenido);
         response.setHeader("Content-Disposition", "inline; filename=\"reporteUtilidadBruta." + extensionArchivo + "\"");
     }
+=======
+>>>>>>> 7107026975515d79007e051943af17425710c6d8
 
     // Obtener la lista de ventas con el filtro aplicado
     List<Venta> listaVentas = Venta.getListaEnObjetos(filtro, null);
@@ -183,6 +203,7 @@
             lista += "</tr>";
         }
     }
+<<<<<<< HEAD
 %>
 
 <div class="table-container">
@@ -289,5 +310,145 @@
     </table>
 </div>
 
+=======
+
+    // Verificar si es una exportación para no ejecutar búsquedas ni mostrar la tabla
+    String formato = request.getParameter("formato");
+    if (formato != null) {
+        String tipoDeContenido = "";
+        String extensionArchivo = "";
+        switch (formato) {
+            case "excel":
+                tipoDeContenido = "application/vnd.ms-excel";
+                extensionArchivo = ".xls";
+                break;
+            case "word":
+                tipoDeContenido = "application/vnd.msword";
+                extensionArchivo = ".doc";
+                break;
+        }
+        response.setContentType(tipoDeContenido);
+        response.setHeader("Content-Disposition", "attachment; filename=\"reporteUtilidadBruta" + extensionArchivo + "\"");
+
+        // Generar la tabla de exportación con el título centrado y logo en la parte superior derecha
+        out.println("<table style='width:100%;'><tr>");
+        out.println("<td style='text-align:center;'><h1 style='margin-top:30px;'>Moda Click</h1></td>");
+        out.println("<td style='text-align:right;'><img src='" + logoUrl + "' width='100' height='100'/></td>");
+        out.println("</tr></table>");
+
+        out.println("<table border='1' style='width:100%; margin-top:20px;'>");
+        out.println("<tr>");
+        out.println("<th>Mes</th>");
+        out.println("<th>Artículo</th>");
+        out.println("<th>Categoría Artículo</th>");
+        out.println("<th>Costo de Mercancía Vendida</th>");
+        out.println("<th>Utilidad Bruta</th>");
+        out.println("<th>Cantidad Vendida</th>");
+        out.println("<th>Subtotal Ventas</th>");
+        out.println("</tr>");
+        out.println(lista); // Insertar las filas generadas en la tabla
+        out.println("<tr>");
+        out.println("<th colspan='3'>Total</th>");
+        out.println("<td align='right'>" + totalCostoMercanciaVendida + "</td>");
+        out.println("<td align='right'>" + totalUtilidadBruta + "</td>");
+        out.println("<td align='right'></td>");
+        out.println("<td align='right'>" + totalSubtotalVentas + "</td>");
+        out.println("</tr>");
+        out.println("</table>");
+
+        // Terminar la ejecución para evitar que el resto de la página se procese
+        return;
+    }
+%>
+
+<h3>Reporte Utilidad Bruta por Ventas</h3>
+
+<!-- Formulario de búsqueda de ventas por rango de meses y otros filtros -->
+<form method="post">
+    <table>
+        <tr>
+            <td><input type="checkbox" name="chkMes" <%=chkMes%>> Mes</td>
+            <td>
+                Desde 
+                <select name="mesDesde">
+                    <option value="01" <%=mesDesde.equals("01") ? "selected" : ""%>>01-Enero</option>
+                    <option value="02" <%=mesDesde.equals("02") ? "selected" : ""%>>02-Febrero</option>
+                    <option value="03" <%=mesDesde.equals("03") ? "selected" : ""%>>03-Marzo</option>
+                    <option value="04" <%=mesDesde.equals("04") ? "selected" : ""%>>04-Abril</option>
+                    <option value="05" <%=mesDesde.equals("05") ? "selected" : ""%>>05-Mayo</option>
+                    <option value="06" <%=mesDesde.equals("06") ? "selected" : ""%>>06-Junio</option>
+                    <option value="07" <%=mesDesde.equals("07") ? "selected" : ""%>>07-Julio</option>
+                    <option value="08" <%=mesDesde.equals("08") ? "selected" : ""%>>08-Agosto</option>
+                    <option value="09" <%=mesDesde.equals("09") ? "selected" : ""%>>09-Septiembre</option>
+                    <option value="10" <%=mesDesde.equals("10") ? "selected" : ""%>>10-Octubre</option>
+                    <option value="11" <%=mesDesde.equals("11") ? "selected" : ""%>>11-Noviembre</option>
+                    <option value="12" <%=mesDesde.equals("12") ? "selected" : ""%>>12-Diciembre</option>
+                </select>
+
+                Hasta 
+                <select name="mesHasta">
+                    <option value="01" <%=mesDesde.equals("01") ? "selected" : ""%>>01-Enero</option>
+                    <option value="02" <%=mesHasta.equals("02") ? "selected" : ""%>>02-Febrero</option>
+                    <option value="03" <%=mesHasta.equals("03") ? "selected" : ""%>>03-Marzo</option>
+                    <option value="04" <%=mesHasta.equals("04") ? "selected" : ""%>>04-Abril</option>
+                    <option value="05" <%=mesHasta.equals("05") ? "selected" : ""%>>05-Mayo</option>
+                    <option value="06" <%=mesHasta.equals("06") ? "selected" : ""%>>06-Junio</option>
+                    <option value="07" <%=mesHasta.equals("07") ? "selected" : ""%>>07-Julio</option>
+                    <option value="08" <%=mesHasta.equals("08") ? "selected" : ""%>>08-Agosto</option>
+                    <option value="09" <%=mesHasta.equals("09") ? "selected" : ""%>>09-Septiembre</option>
+                    <option value="10" <%=mesHasta.equals("10") ? "selected" : ""%>>10-Octubre</option>
+                    <option value="11" <%=mesHasta.equals("11") ? "selected" : ""%>>11-Noviembre</option>
+                    <option value="12" <%=mesHasta.equals("12") ? "selected" : ""%>>12-Diciembre</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="chkNombreArticulo" <%=chkNombreArticulo%>> Artículo</td>
+            <td><input type="text" id="nombreArticulo" name="nombreArticulo" value="<%=nombreArticulo%>"></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="chkIdCategoria" <%=chkIdCategoria%>> Categoría Artículo</td>
+            <td><select name="idCategoria"><%=Categoria.getListaEnOptions(idCategoria)%></select></td>
+        </tr>
+    </table>
+    <p>
+        <input type="submit" name="buscar" value="Buscar">
+    </p>
+</form>
+
+<!-- Opciones de exportación -->
+<p>
+    <a href="Reportes/reporteUtilidadBruta.jsp?formato=excel" target="_blank"><img src="presentacion/excel.png" width="50" height="50"></a>
+    <a href="Reportes/reporteUtilidadBruta.jsp?formato=word" target="_blank"><img src="presentacion/word.png" width="50" height="50"></a>
+</p>
+
+<!-- Mostrar la tabla solo si no es una exportación -->
+<%
+    if (formato == null) { // Mostrar solo si no es exportación
+%>
+    <!-- Tabla del reporte de utilidad bruta por ventas -->
+    <table border="1">
+        <tr>
+            <th>Mes</th>
+            <th>Artículo</th>
+            <th>Categoría Artículo</th>
+            <th>Costo de Mercancía Vendida</th>
+            <th>Utilidad Bruta</th>
+            <th>Cantidad Vendida</th>
+            <th>Subtotal Ventas</th>
+        </tr>
+        <%=lista%>
+        <tr>
+            <th colspan="3">Total</th>
+            <td align="right"><%=totalCostoMercanciaVendida%></td> <!-- Mostrar total costo de mercancía vendida -->
+            <td align="right"><%=totalUtilidadBruta%></td>
+            <td align="right"></td>
+            <td align="right"><%=totalSubtotalVentas%></td>
+        </tr>
+    </table>
+<%
+    }
+%>
+>>>>>>> 7107026975515d79007e051943af17425710c6d8
 </body>
 </html>

@@ -87,6 +87,7 @@
     }
 %>
 
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -217,3 +218,54 @@
 
 </body>
 </html>
+=======
+<h3>Reporte de Compras</h3>
+
+<!-- Formulario de búsqueda de compras por fecha y otros filtros -->
+<form method="post">
+    <table>
+        <tr>
+            <td><input type="checkbox" name="chkFecha" <%=chkFecha%>> Fecha de Compra</td>
+            <td>
+                Desde <input type="date" name="fechaInicio" value="<%=fechaInicio%>">
+                Hasta <input type="date" name="fechaFin" value="<%=fechaFin%>">
+            </td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="chkNombreArticulo" <%=chkNombreArticulo%>> Nombre Artículo</td>
+            <td><input type="text" name="nombreArticulo" value="<%=nombreArticulo%>"></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="chkIdCategoria" <%=chkIdCategoria%>> Categoría</td>
+            <td><select name="idCategoria"><%=Categoria.getListaEnOptions(idCategoria)%></select></td>
+        </tr>
+    </table>
+    <p>
+        <input type="submit" name="buscar" value="Buscar">
+    </p>
+</form>
+
+<!-- Opciones de exportación -->
+<p>
+    <a href="Reportes/reporteCompras.jsp?formato=excel" target="_blank"><img src="presentacion/excel.png" width="50" height="50"></a>
+    <a href="Reportes/reporteCompras.jsp?formato=word" target="_blank"><img src="presentacion/word.png" width="50" height="50"></a>
+</p>
+
+<!-- Tabla del reporte de compras -->
+<table border="1">
+    <tr>
+        <th>Fecha de Compra</th>
+        <th>Artículo</th>
+        <th>Categoría</th>
+        <th>Cantidad</th>
+        <th>Valor Unitario (Compra)</th>
+        <th>Descripción</th>
+        <th>Subtotal</th>
+    </tr>
+    <%=lista%>
+    <tr>
+        <th colspan="6">Valor Total</th>
+        <th align="right"><%=valorTotal%></th>
+    </tr>
+</table>
+>>>>>>> 7107026975515d79007e051943af17425710c6d8

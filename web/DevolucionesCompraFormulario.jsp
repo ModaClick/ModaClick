@@ -24,7 +24,11 @@
             border-radius: 8px; /* Bordes redondeados */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra del formulario */
         }
+
         h2 {
+
+        h1 {
+
             text-align: center; /* Centrar el texto */
             color: #333; /* Color del texto */
             margin-bottom: 20px; /* Margen inferior */
@@ -129,7 +133,11 @@
 </head>
 <body>
     <div class="form-container">
+<<<<<<< HEAD
         <h2><%= (request.getParameter("id") != null) ? "MODIFICAR DEVOLUCION DE COMPRAS" : "ADICIONAR DEVOLUCION DE COMPRAS"%></h2>
+=======
+        <h1><%= (request.getParameter("id") != null) ? "Actualizar Devolución de Compra" : "Adicionar Devolución de Compra"%></h1>
+>>>>>>> 7107026975515d79007e051943af17425710c6d8
 
         <%
             DevolucionCompra devolucion = null;

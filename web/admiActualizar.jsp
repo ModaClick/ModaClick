@@ -1,3 +1,10 @@
+ <%-- 
+    Document   : admiActualizar
+    Created on : 13/09/2024, 12:20:36 AM
+    Author     : casa
+--%>
+
+
 <%@ page import="clases.Persona" %>
 <%@ page import="java.io.IOException" %>
 <!DOCTYPE html>
@@ -50,10 +57,15 @@
         }
 
         if (success) {
+
             response.sendRedirect("http://localhost:8081/ModaClick/principal.jsp?CONTENIDO=administradores.jsp");
+
+            response.sendRedirect("administradores.jsp");
+
         } else {
             out.println("Error al realizar la acción.");
         }
     %>
 </body>
 </html>
+

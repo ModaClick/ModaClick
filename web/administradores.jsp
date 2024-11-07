@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         /* Estilo de encabezado centrado */
+
         .table-container h2 {
+
+        .table-container h3 {
+
             text-align: center;
             color: #333;
             margin: 0;
@@ -49,6 +53,7 @@
         }
 
         /* Estilos de botones de acción */
+
         .btn-action {
             font-size: 14px;
             color: white;
@@ -66,13 +71,29 @@
             height: 20px;
             margin-right: 5px;
         }
+
+        .action-btn {
+            padding: 5px;
+            font-size: 14px;
+            color: white;
+            border-radius: 4px;
+            margin: 2px;
+        }
+        .btn-primary { background-color: #00cc00; }
+        .btn-modify { background-color: #ffc107; }
+        .btn-delete { background-color: #dc3545; }
+
     </style>
 </head>
 <body>
 
 <div class="container-fluid">
     <div class="table-container">
+
         <h2>ADMINISTRADORES</h2>
+
+        <h3>ADMINISTRADORES</h3>
+
         <div class="table-responsive">
             <table class="table table-hover table-bordered">
                 <thead class="thead-dark">
@@ -83,9 +104,15 @@
                         <th>Género</th>
                         <th>Correo Electrónico</th>
                         <th>
+
                            <a href="adminFormulario.jsp?action=add" class="btn btn-action btn-add" title="Adicionar">
                             <img src="presentacion/adicionar.png" width='30' height='30' title='Adicionar'>
                         </a>
+
+                            <a href="admiFormulario.jsp?action=add" class="action-btn btn-primary" title="Adicionar">
+                                <img src="presentacion/adicionar.png" width="20" alt="Adicionar">
+                            </a>
+
                         </th>
                     </tr>
                 </thead>
@@ -104,12 +131,21 @@
                         <td><%= administrador.getGenero() %></td>
                         <td><%= administrador.getCorreoElectronico() %></td>
                         <td>
+
                            <a href="adminFormulario.jsp?action=edit&id=<%= administrador.getIdentificacion() %>" class="btn-action btn-edit" title="Modificar">
                             <img src="presentacion/modificar.png" width='30' height='30' title='Modificar'>
                         </a>
                         <a href="admiActualizar.jsp?action=delete&id=<%= administrador.getIdentificacion() %>" class="btn-action btn-delete" title="Eliminar">
                             <img src="presentacion/eliminar.png" width='30' height='30' title='Eliminar'>
                         </a>
+
+                            <a href="admiFormulario.jsp?action=edit&id=<%= administrador.getIdentificacion() %>" class="action-btn btn-modify" title="Modificar">
+                                <img src="presentacion/modificar.png" width="16" alt="Modificar">
+                            </a>
+                            <a href="javascript:void(0)" onclick="confirmarEliminacion('<%= administrador.getIdentificacion() %>')" class="action-btn btn-delete" title="Eliminar">
+                                <img src="presentacion/eliminar.png" width="16" alt="Eliminar">
+                            </a>
+
                         </td>
                     </tr>
                     <% } %>
