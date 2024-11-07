@@ -1,0 +1,70 @@
+/* Estilo para formularios */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    max-width: 600px;
+    text-align: center; /* Centrar el contenido dentro del formulario */
+}
+
+/* Título del formulario */
+form h3 {
+    text-align: center;
+    background-color: transparent; /* Sin fondo */
+    color: #000; /* Color negro para el título */
+    margin-bottom: 20px; /* Espacio debajo del título */
+    font-size: 24px; /* Tamaño de fuente más grande para el título */
+}
+
+/* Estilo general para las tablas dentro del formulario */
+form table {
+    width: 100%;
+    font-size: 16px;
+    border-collapse: collapse;
+}
+
+/* Estilo para las celdas */
+form th, form td {
+    padding: 10px;
+    text-align: left;
+    background-color: transparent; /* Eliminar fondo de las etiquetas */
+}
+
+form th {
+    color: #333; /* Color del texto de las etiquetas */
+    font-weight: normal;
+}
+
+/* Estilo para los campos de texto y áreas de texto */
+form input[type="text"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form textarea:focus {
+    border-color: #005f73; /* Cambia a azul oscuro al enfocar */
+}
+
+/* Estilo para el botón */
+form input[type="submit"] {
+    background-color: #005f73; /* Azul oscuro */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0a9396; /* Azul más claro al pasar el ratón */
+}
